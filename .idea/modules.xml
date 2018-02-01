@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/GoPheR/GoPheR.iml" filepath="$PROJECT_DIR$/GoPheR/GoPheR.iml" />
       <module fileurl="file://$PROJECT_DIR$/Gopher.iml" filepath="$PROJECT_DIR$/Gopher.iml" />
     </modules>
   </component>
