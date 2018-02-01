@@ -8,18 +8,21 @@ public class GUIMenu {
     private JMenu menu;
 
     public GUIMenu() {
-
-
+        menuBar = new JMenuBar();
+        addToMenuBar("File");
+        addToMenuBar("Settings");
     }
 
-    private JMenu createMenu(String name){
-        JMenu menu = new JMenu(name);
-        menu.setMnemonic(KeyEvent.VK_A);
-        menu.getAccessibleContext().setAccessibleDescription("The only menu");
-        return menu;
+
+    private void addToMenuBar (String name){
+        menuBar.add(new JMenu(name));
     }
 
-    private void addToMenuBar (JMenu menu){
-        menuBar.add(menu);
+    public void addMenu (JFrame frame){
+        frame.add(this.menuBar);
+    }
+
+    public void addMenu (JPanel panel){
+        panel.add(menuBar);
     }
 }
