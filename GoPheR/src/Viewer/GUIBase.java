@@ -1,17 +1,15 @@
 package Viewer;
 
 import javax.swing.*;
-import javax.swing.border.Border;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class GUIBase {
     private JFrame frame;
     private final String applicationName = "GoPheR";
-    private final int PROGRAM_WIDTH = 500;
-    private final int TABBED_HEIGHT = 50;
-    private final int SETTINGS_HEIGHT = 200;
-    private final int RUN_HEIGHT = 50;
+    private final int PROGRAM_WIDTH = 600;
+    private final int PROGRAM_HEIGHT = 300;
     private GridBagConstraints c;
     private Container contentPane;
 
@@ -23,7 +21,7 @@ public class GUIBase {
     public GUIBase() {
 
         frame = new JFrame();
-        frame.setMinimumSize(new Dimension(PROGRAM_WIDTH, TABBED_HEIGHT + SETTINGS_HEIGHT + RUN_HEIGHT));
+        frame.setMinimumSize(new Dimension(PROGRAM_WIDTH, PROGRAM_HEIGHT));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
         contentPane = frame.getContentPane();
@@ -32,7 +30,6 @@ public class GUIBase {
 
         frame.setVisible(true);
     }
-
 
     private void addContentToPane(Container pane) {
         c = new GridBagConstraints();
@@ -63,9 +60,6 @@ public class GUIBase {
         c.gridx = 0;
         c.gridy = 2;
 
-
-
-        c.gridy = 3;
         JPanel runPanel = new JPanel();
         runPanel.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
         pane.add(runPanel, c);
@@ -81,15 +75,27 @@ public class GUIBase {
         c.weighty = 0.5;
         c.gridx = 0;
         c.gridy = 0;
+        c.gridwidth = 1;
         JButton runButton = new JButton("Run");
         pane.add(runButton,c);
 
-        JProgressBar progressBar = new JProgressBar(0,100);
-        c.gridx = 1;
-        pane.add(progressBar,c);
+        JTextField status = new JTextField(30);
+        status.setText("Select an export folder to start");
+        status.setEditable(false);
+        c.gridx=1;
+        c.gridwidth = 3;
+        pane.add(status,c);
 
+        JProgressBar progressBar = new JProgressBar(0,100);
+        c.gridx = 4;
+        c.gridwidth=5;
+        pane.add(progressBar,c);
     }
 
+
+    /*
+    add the panels for each type spreadsheet.
+     */
     private void addToTabbedPane(JTabbedPane pane) {
         JComponent defectPanel = makeTextPanel("Defects");
         pane.add(defectPanel);
@@ -109,6 +115,17 @@ public class GUIBase {
         return panel;
     }
 
+    private JComponent makeDefectPanel(){
+        return null;
+    }
+
+    private JComponent makeLayerPanel(){
+        return null;
+    }
+
+    private JComponent makeLaserPanel(){
+        return null;
+    }
 
     private void addToSettings(JPanel panel) {
         panel.setLayout(new GridBagLayout());
